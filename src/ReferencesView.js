@@ -13,6 +13,8 @@ import {
 
 import config from './config';
 
+import Reference from './Reference';
+
 
 class ReferencesView extends React.Component {
   constructor(props) {
@@ -102,19 +104,18 @@ class ReferencesView extends React.Component {
       );
     }
 
+    if (!this.state.references.length) {
+      return (
+        <h3>
+          <i>No references to show.</i>
+        </h3>
+      );
+    }
+
     return this.state.references.map((el, i) => (
-      <Col s={12} m={4} key={i}>
-        <Card >
-          <div className="card-image waves-effect waves-block waves-light">
-            <i className="material-icons right" onClick={this.onDeleteReferenceClick.bind(this, el, i)}>delete</i>
-          </div>
-          <div className="card-content">
-            <Link className="card-title" to={el.url}>{el.name}</Link>
-            <p>{el.description}</p>
-          </div>
-        </Card>
-                
-      </Col>
+      <Reference reference={el}
+        onDeleteReferenceClick={this.onDeleteReferenceClick.bind(this, el, i)}
+        key={i}/>
     ));
   }
 

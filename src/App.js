@@ -16,10 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar brand='RefCounter' right className='blue-grey'>
-          <NavItem href='get-started.html'>Getting started</NavItem>
-          <NavItem href='components.html'>Components</NavItem>
-        </Navbar>
+        <Navbar brand='RefCounter' right className='teal lighten-3'/>
 
         {this.props.children}
       </div>
